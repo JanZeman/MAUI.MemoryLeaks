@@ -1,9 +1,9 @@
 namespace MAUI.MemoryLeaks.View;
 
-public partial class HomePage
+public partial class Case01Page
 {
-	public HomePage()
+	public Case01Page()
 	{
 		InitializeComponent();
-    }
+	}
 }

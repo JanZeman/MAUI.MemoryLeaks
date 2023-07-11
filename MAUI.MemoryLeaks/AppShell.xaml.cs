@@ -1,10 +1,13 @@
-﻿namespace MAUI.MemoryLeaks
+﻿using MAUI.MemoryLeaks.View;
+
+namespace MAUI.MemoryLeaks;
+
+public partial class AppShell : Shell
 {
-    public partial class AppShell : Shell
+    public AppShell()
     {
-        public AppShell()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+
+        Routing.RegisterRoute(nameof(Case01Page), typeof(Case01Page));
     }
 }

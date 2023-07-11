@@ -6,14 +6,19 @@
     xmlns:viewmodel="clr-namespace:MAUI.MemoryLeaks.ViewModel"
     x:DataType="viewmodel:HomeViewModel"
     Title="Home">
-    <VerticalStackLayout>
+    <VerticalStackLayout Padding="10">
+        <Label 
+            Text="{Binding Motivation}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
         <Label 
             Text="{Binding Text}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
         <Button
-            Text="Click me"
-            Command="{Binding ChangeTextCommand}" />
+            Text="Case 1: ObservableCollection"
+            Command="{Binding NavigateToCase01Command}" />
     </VerticalStackLayout>
 </ContentPage>
