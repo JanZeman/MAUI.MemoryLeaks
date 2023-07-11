@@ -1,4 +1,8 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Windows.Graphics;
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+using WinRT.Interop;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -20,5 +24,20 @@ namespace MAUI.MemoryLeaks.WinUI
         }
 
         protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+
+
+        protected override void OnLaunched(LaunchActivatedEventArgs args)
+        {
+            base.OnLaunched(args);
+
+            var elementHandler = Application.Windows[0].Handler;
+            if (elementHandler == null) return;
+
+            var currentWindow = elementHandler.PlatformView;
+            var windowHandle = WindowNative.GetWindowHandle(currentWindow);
+            var windowId = Win32Interop.GetWindowIdFromWindow(windowHandle);
+            var appWindow = AppWindow.GetFromWindowId(windowId);
+            appWindow.Resize(new SizeInt32(400, 800));
+        }
     }
 }
