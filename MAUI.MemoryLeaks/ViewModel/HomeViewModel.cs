@@ -12,7 +12,7 @@ public partial class HomeViewModel : BaseViewModel
 
     public HomeViewModel()
     {
-        Motivation = "It is year 2023 and we still experience too many memory leaks in MAUI in both released and yet unreleased versions. This project is an attempt to identify some of them.";
+        Motivation = "It's 2023, and we are still encountering numerous memory leaks in MAUI, both in released and upcoming versions. This project aims to identify some of these issues.";
     }
 
     [RelayCommand]
