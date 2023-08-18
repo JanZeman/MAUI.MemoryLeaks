@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid
+    x:Class="MAUI.MemoryLeaks.Controls.ItemCard"
+    x:DataType="model:Item"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:MAUI.MemoryLeaks.Model">
+
+    <StackLayout Orientation="Horizontal">
+        <Label Text="{Binding Value}" />
+        <Label Text=" (using template)" />
+    </StackLayout>
+</Grid>
