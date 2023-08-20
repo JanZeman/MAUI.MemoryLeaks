@@ -17,6 +17,11 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
+        <Label
+            Text="{Binding MemorySize}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
         <Button
             Text="Case 1: ObservableCollection"
             Command="{Binding NavigateToCase01Command}" />
