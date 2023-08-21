@@ -18,6 +18,15 @@ public abstract partial class BaseViewModel
     public virtual void OnAppearing() => UpdateInfo();
     public virtual void OnDisappearing() { }
 
+    [RelayCommand]
+    private void CallGarbageCollector()
+    {
+        GC.Collect();
+        GC.WaitForPendingFinalizers();
+        GC.Collect();
+        UpdateInfo();
+    }
+
     protected virtual void UpdateInfo()
     {
         MemorySize = UpdateMemoryUsage(null);

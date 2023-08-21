@@ -9,8 +9,11 @@
     <VerticalStackLayout Padding="10">
         <Label 
             Text="{Binding Motivation}"
+            FontAttributes="Italic"
+            FontSize="14"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center"
+            Margin="0,0,20,0" />
 
         <Label 
             Text="{Binding Text}"
@@ -20,9 +23,16 @@
         <Label
             Text="{Binding MemorySize}"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center"
+            Margin="0,0,0,20" />
 
         <Button
+            Margin="10"
+            Text="Call Garbage Collector"
+            Command="{Binding CallGarbageCollectorCommand}" />
+
+        <Button
+            Margin="10"
             Text="Case 1: ObservableCollection"
             Command="{Binding NavigateToCase01Command}" />
     </VerticalStackLayout>

@@ -30,13 +30,13 @@
 
             <Button
                 Margin="10"
-                Text="Call Garbage Collector"
-                Command="{Binding CallGarbageCollectorCommand}" />
+                Text="Rebind"
+                Clicked="Button_OnClicked" />
 
             <Button
                 Margin="10"
-                Text="Rebind"
-                Clicked="Button_OnClicked" />
+                Text="Call Garbage Collector"
+                Command="{Binding CallGarbageCollectorCommand}" />
         </StackLayout>
 
         <CollectionView

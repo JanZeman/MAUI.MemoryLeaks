@@ -33,15 +33,6 @@ public partial class Case01ViewModel : BaseViewModel
         UpdateInfo();
     }
 
-    [RelayCommand]
-    private void CallGarbageCollector()
-    {
-        GC.Collect();
-        GC.WaitForPendingFinalizers();
-        GC.Collect();
-        UpdateInfo();
-    }
-
     protected override void UpdateInfo()
     {
         base.UpdateInfo();
