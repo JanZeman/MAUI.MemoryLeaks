@@ -4,14 +4,23 @@ namespace MAUI.MemoryLeaks;
 
 public partial class App : Application
 {
+    public static Window Window { get; private set; }
+
     public App()
     {
         InitializeComponent();
 
         PageAppearing += Appearing;
+        
         PageDisappearing += Disappearing;
 
         MainPage = new AppShell();
+    }
+
+    protected override Window CreateWindow(IActivationState activationState)
+    {
+        Window = base.CreateWindow(activationState);
+        return Window;
     }
 
     private BaseViewModel ResolveViewModel(Page page)
