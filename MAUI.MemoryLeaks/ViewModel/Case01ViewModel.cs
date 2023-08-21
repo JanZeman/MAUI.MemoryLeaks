@@ -8,7 +8,7 @@ public partial class Case01ViewModel : BaseViewModel
     private string _itemsCount;
 
     [ObservableProperty]
-    private ObservableList<Item> _items = new();
+    private SimpleObservableCollection<Item> _items = new();
 
     [RelayCommand]
     private void AddItems()
