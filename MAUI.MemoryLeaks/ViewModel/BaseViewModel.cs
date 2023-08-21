@@ -15,7 +15,19 @@ public abstract partial class BaseViewModel
     [ObservableProperty]
     private string _memorySize;
 
-    public virtual void OnAppearing() => UpdateInfo();
+    public virtual void OnAppearing() { }
+
+    public virtual void OnLoaded()
+    {
+        UpdateInfo();
+
+        MainThread.InvokeOnMainThreadAsync(async () =>
+        {
+            await Task.Delay(3000);
+            UpdateInfo();
+        });
+    }
+
     public virtual void OnDisappearing() { }
 
     [RelayCommand]
@@ -27,6 +39,7 @@ public abstract partial class BaseViewModel
         UpdateInfo();
     }
 
+    [RelayCommand]
     protected virtual void UpdateInfo()
     {
         MemorySize = UpdateMemoryUsage(null);

@@ -11,7 +11,6 @@ public partial class App : Application
         InitializeComponent();
 
         PageAppearing += Appearing;
-        
         PageDisappearing += Disappearing;
 
         MainPage = new AppShell();

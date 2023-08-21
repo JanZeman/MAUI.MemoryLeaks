@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<view:MauiPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="MAUI.MemoryLeaks.View.Case01Page"
+    xmlns:view="clr-namespace:MAUI.MemoryLeaks.View"
     xmlns:viewmodel="clr-namespace:MAUI.MemoryLeaks.ViewModel"
     x:DataType="viewmodel:Case01ViewModel"
     Title="Case01Page">
@@ -40,7 +41,6 @@
         </StackLayout>
 
         <CollectionView
-            x:Name="MyCollection"
             Grid.Row="1"
             Margin="10"
             ItemsSource="{Binding Items}">
@@ -52,4 +52,4 @@
             </CollectionView.ItemTemplate>-->
         </CollectionView>
     </Grid>
-</ContentPage>
+</view:MauiPage>
