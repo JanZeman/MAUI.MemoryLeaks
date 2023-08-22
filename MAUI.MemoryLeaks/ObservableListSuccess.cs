@@ -2,7 +2,7 @@
 
 namespace MAUI.MemoryLeaks;
 
-public class ObservableListList<T> : List<T>, INotifyCollectionChanged
+public class ObservableListSuccess<T> : List<T>, INotifyCollectionChanged
 {
     public event NotifyCollectionChangedEventHandler CollectionChanged;
 

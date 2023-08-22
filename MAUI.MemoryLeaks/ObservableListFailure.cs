@@ -2,13 +2,13 @@
 
 namespace MAUI.MemoryLeaks;
 
-public class ObservableList<T> : IList<T>, INotifyCollectionChanged
+public class ObservableListFailure<T> : IList<T>, INotifyCollectionChanged
 {
     private List<T> _internalList = new();
 
-    public ObservableList() { }
+    public ObservableListFailure() { }
 
-    public ObservableList(IEnumerable<T> collection)
+    public ObservableListFailure(IEnumerable<T> collection)
     {
         AddRange(collection);
     }

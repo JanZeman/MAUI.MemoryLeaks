@@ -8,7 +8,7 @@ public partial class Case01ViewModel : BaseViewModel
     private string _itemsCount;
 
     [ObservableProperty]
-    private ObservableList<ItemSample> _items = new();
+    private ObservableListFailure<ItemSample> _items = new();
 
     [RelayCommand]
     private void AddItems()
@@ -26,7 +26,7 @@ public partial class Case01ViewModel : BaseViewModel
     private void ClearItems()
     {
         Items.Clear();
-        Items = new ObservableList<ItemSample>();
+        Items = new ObservableListFailure<ItemSample>();
         UpdateInfo();
     }
 
