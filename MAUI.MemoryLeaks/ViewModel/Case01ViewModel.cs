@@ -17,8 +17,6 @@ public partial class Case01ViewModel : BaseViewModel
         var newItems = new List<ItemSample>(count);
         for (var i = 0; i < count; i++) newItems.Add(new ItemSample());
         Items.AddRange(newItems);
-        //Items.Notify();
-
         UpdateInfo();
     }
 
@@ -41,6 +39,4 @@ public partial class Case01ViewModel : BaseViewModel
     {
         return $"Items count: {Items.Count}";
     }
-
-
 }
