@@ -24,7 +24,7 @@ public partial class Case01ViewModel : BaseViewModel
     private void ClearItems()
     {
         Items.Clear();
-        // The following line can avoid memory leaks if ObservableInheritedCollection or ObservableInheritedList classes are used
+        // The following line is required to avoids memory leaks in case other class than ObservableComposedList is used.
         //Items = new ObservableInheritedCollection<ItemSample>();
         UpdateInfo();
     }
