@@ -14,22 +14,17 @@ public partial class Case01ViewModel : BaseViewModel
     private void AddItems()
     {
         const int count = 100000;
-        //var newItems = new List<Item>(count);
-        for (var i = 0; i < count; i++)
-        {
-            //newItems.Add(new Item());
-            Items.Add(new Item());
-        }
+        var newItems = new List<Item>(count);
+        for (var i = 0; i < count; i++) newItems.Add(new Item());
+        Items.AddRange(newItems);
 
-        Items.Notify();
         UpdateInfo();
     }
 
     [RelayCommand]
     private void ClearItems()
     {
-        Items.RemoveAll(item => true);
-        Items.Notify();
+        Items.Clear();
         UpdateInfo();
     }
 
