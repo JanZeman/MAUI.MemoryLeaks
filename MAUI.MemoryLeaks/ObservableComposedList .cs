@@ -81,7 +81,7 @@ public class ObservableComposedList<T> : IList<T>, IList, INotifyCollectionChang
         OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, removedItem, index));
     }
 
-    System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => GetEnumerator();
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
     // IList members (explicitly implemented)
     object IList.this[int index]
@@ -116,7 +116,7 @@ public class ObservableComposedList<T> : IList<T>, IList, INotifyCollectionChang
         Remove((T)value);
     }
 
-    public void CopyTo(System.Array array, int index)
+    public void CopyTo(Array array, int index)
     {
         ((IList)_internalList).CopyTo(array, index);
     }
