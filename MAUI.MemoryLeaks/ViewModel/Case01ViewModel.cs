@@ -17,6 +17,7 @@ public partial class Case01ViewModel : BaseViewModel
         var newItems = new List<Item>(count);
         for (var i = 0; i < count; i++) newItems.Add(new Item());
         Items.AddRange(newItems);
+        Items.Notify();
 
         UpdateInfo();
     }
@@ -25,6 +26,7 @@ public partial class Case01ViewModel : BaseViewModel
     private void ClearItems()
     {
         Items.Clear();
+        Items.Notify();
         UpdateInfo();
     }
 
