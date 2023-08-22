@@ -40,6 +40,8 @@ public class ObservableListFailure<T> : IList<T>, IList, INotifyCollectionChange
     public void Clear()
     {
         _internalList.Clear();
+        // This next line should not be necessary but it avoids memory leaks on Windows application.
+        // Question is what is the root cause, Microsoft.Maui.Controls.Handlers.Items.CollectionViewHandler maybe?
         _internalList = new List<T>();
         OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
     }
