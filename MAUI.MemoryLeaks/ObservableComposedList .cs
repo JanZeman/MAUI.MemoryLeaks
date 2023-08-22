@@ -3,13 +3,19 @@ using System.Collections;
 
 namespace MAUI.MemoryLeaks;
 
-public class ObservableListFailure<T> : IList<T>, IList, INotifyCollectionChanged
+/// <summary>
+/// An attempt to implement a performing lightweight ObservableList that can easily hold 1.000.000 items and still bind to MAUI CollectionView.
+/// The default ObservableCollection is extremely slow and memory leaking.
+/// This version is based on composition around and instance of internal generic list.
+/// If non-generic IList interface not implemented then MAUI CollectionView does not show any items. What exact property or method causes this is unknown to me at the moment.
+/// </summary>
+public class ObservableComposedList<T> : IList<T>, IList, INotifyCollectionChanged
 {
     private List<T> _internalList = new();
 
-    public ObservableListFailure() { }
+    public ObservableComposedList() { }
 
-    public ObservableListFailure(IEnumerable<T> collection)
+    public ObservableComposedList(IEnumerable<T> collection)
     {
         AddRange(collection);
     }

@@ -2,7 +2,12 @@
 
 namespace MAUI.MemoryLeaks;
 
-public class ObservableListSuccess<T> : List<T>, INotifyCollectionChanged
+/// <summary>
+/// An attempt to implement a performing lightweight ObservableList that can easily hold 1.000.000 items and still bind to MAUI CollectionView.
+/// The default ObservableCollection is extremely slow and memory leaking.
+/// This version is based on inheritance from the generic list.
+/// </summary>
+public class ObservableInheritedList<T> : List<T>, INotifyCollectionChanged
 {
     public event NotifyCollectionChangedEventHandler CollectionChanged;
 
