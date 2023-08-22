@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace MAUI.MemoryLeaks;
 
-public class ObservableListFailure<T> : IList<T>, IList, IReadOnlyList<T>, INotifyCollectionChanged
+public class ObservableListFailure<T> : IList<T>, IList, INotifyCollectionChanged
 {
     private List<T> _internalList = new();
 
@@ -75,7 +75,7 @@ public class ObservableListFailure<T> : IList<T>, IList, IReadOnlyList<T>, INoti
 
     System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => GetEnumerator();
 
-    // IList members
+    // IList members (explicitly implemented)
     object IList.this[int index]
     {
         get => _internalList[index];
