@@ -13,7 +13,7 @@ public partial class Case01ViewModel : BaseViewModel
     [RelayCommand]
     private void AddItems()
     {
-        const int count = 100000;
+        const int count = 1000000;
         var newItems = new List<ItemSample>(count);
         for (var i = 0; i < count; i++) newItems.Add(new ItemSample());
         Items.AddRange(newItems);
@@ -26,8 +26,8 @@ public partial class Case01ViewModel : BaseViewModel
     private void ClearItems()
     {
         Items.Clear();
-        // The following line can avoid memory leaks if other then ObservableComposedList class is used
-        ////Items = new ObservableComposedList<ItemSample>();
+        // The following line can avoid memory leaks if ObservableInheritedCollection or ObservableInheritedList classes are used
+        //Items = new ObservableInheritedCollection<ItemSample>();
         UpdateInfo();
     }
 
