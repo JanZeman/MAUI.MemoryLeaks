@@ -1,8 +1,9 @@
 ﻿using System.Collections.Specialized;
+using System.Collections;
 
 namespace MAUI.MemoryLeaks;
 
-public class ObservableListFailure<T> : IList<T>, INotifyCollectionChanged
+public class ObservableListFailure<T> : IList<T>, IList, IReadOnlyList<T>, INotifyCollectionChanged
 {
     private List<T> _internalList = new();
 
@@ -15,6 +16,7 @@ public class ObservableListFailure<T> : IList<T>, INotifyCollectionChanged
 
     public event NotifyCollectionChangedEventHandler CollectionChanged;
 
+    // IList<T> members
     public T this[int index]
     {
         get => _internalList[index];
@@ -35,23 +37,9 @@ public class ObservableListFailure<T> : IList<T>, INotifyCollectionChanged
         OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, item));
     }
 
-    public void AddRange(IEnumerable<T> collection)
-    {
-        var itemsToAdd = collection?.ToList() ?? new List<T>();
-        if (itemsToAdd.Count == 0) return;
-
-        var startingIndex = _internalList.Count;
-        _internalList.AddRange(itemsToAdd);
-
-        // Notify about the added items in one go.
-        OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, itemsToAdd, startingIndex));
-    }
-
     public void Clear()
     {
         _internalList.Clear();
-        // This next line should not be necessary but it avoids memory leaks on Windows application.
-        // Question is what is the root cause, Microsoft.Maui.Controls.Handlers.Items.CollectionViewHandler maybe?
         _internalList = new List<T>();
         OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
     }
@@ -87,8 +75,57 @@ public class ObservableListFailure<T> : IList<T>, INotifyCollectionChanged
 
     System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => GetEnumerator();
 
+    // IList members
+    object IList.this[int index]
+    {
+        get => _internalList[index];
+        set => _internalList[index] = (T)value;
+    }
+
+    public bool IsFixedSize => false;
+
+    public object SyncRoot => ((IList)_internalList).SyncRoot;
+
+    public bool IsSynchronized => ((IList)_internalList).IsSynchronized;
+
+    public int Add(object value)
+    {
+        Add((T)value);
+        return IndexOf((T)value);
+    }
+
+    public bool Contains(object value) => ((IList)_internalList).Contains(value);
+
+    public int IndexOf(object value) => ((IList)_internalList).IndexOf(value);
+
+    public void Insert(int index, object value)
+    {
+        Insert(index, (T)value);
+    }
+
+    public void Remove(object value)
+    {
+        Remove((T)value);
+    }
+
+    public void CopyTo(System.Array array, int index)
+    {
+        ((IList)_internalList).CopyTo(array, index);
+    }
+
     private void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
     {
         CollectionChanged?.Invoke(this, e);
+    }
+
+    // Method to add a range to the list (used in the constructor)
+    public void AddRange(IEnumerable<T> collection)
+    {
+        var itemsToAdd = collection?.ToList() ?? new List<T>();
+        if (itemsToAdd.Count == 0) return;
+
+        var startingIndex = _internalList.Count;
+        _internalList.AddRange(itemsToAdd);
+        OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, itemsToAdd, startingIndex));
     }
 }
