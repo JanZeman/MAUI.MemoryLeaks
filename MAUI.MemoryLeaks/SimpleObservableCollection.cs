@@ -6,6 +6,13 @@ public class SimpleObservableCollection<T> : IList<T>, INotifyCollectionChanged
 {
     private List<T> _internalList = new ();
 
+    public SimpleObservableCollection() { }
+
+    public SimpleObservableCollection(IEnumerable<T> collection)
+    {
+        AddRange(collection);
+    }
+
     public event NotifyCollectionChangedEventHandler CollectionChanged;
 
     public T this[int index]
@@ -45,7 +52,7 @@ public class SimpleObservableCollection<T> : IList<T>, INotifyCollectionChanged
         _internalList.Clear();
         // This next line should not be necessary but it avoids memory leaks on Windows application.
         // Question is what is the root cause, Microsoft.Maui.Controls.Handlers.Items.CollectionViewHandler maybe?
-        //_internalList = new List<T>();
+        _internalList = new List<T>();
         OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
     }
 
