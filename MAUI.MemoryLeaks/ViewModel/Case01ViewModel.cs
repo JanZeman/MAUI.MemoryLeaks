@@ -26,7 +26,8 @@ public partial class Case01ViewModel : BaseViewModel
     private void ClearItems()
     {
         Items.Clear();
-        Items = new ObservableComposedList<ItemSample>();
+        // The following line can avoid memory leaks if other then ObservableComposedList class is used
+        ////Items = new ObservableComposedList<ItemSample>();
         UpdateInfo();
     }
 
