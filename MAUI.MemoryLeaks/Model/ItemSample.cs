@@ -1,6 +1,6 @@
 ﻿namespace MAUI.MemoryLeaks.Model;
 
-public class Item
+public class ItemSample
 {
     ////private static readonly List<Item> SimulatedLeakedObjects = new ();
 
@@ -10,7 +10,7 @@ public class Item
 
     public string Value { get; }
 
-    public Item()
+    public ItemSample()
     {
         Value = $"{++_historyNo}: {RandomString(7)}";
 

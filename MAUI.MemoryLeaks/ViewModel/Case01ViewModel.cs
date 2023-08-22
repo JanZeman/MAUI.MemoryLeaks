@@ -8,16 +8,16 @@ public partial class Case01ViewModel : BaseViewModel
     private string _itemsCount;
 
     [ObservableProperty]
-    private SimpleObservableCollection<Item> _items = new();
+    private ObservableListList<ItemSample> _items = new();
 
     [RelayCommand]
     private void AddItems()
     {
         const int count = 100000;
-        var newItems = new List<Item>(count);
-        for (var i = 0; i < count; i++) newItems.Add(new Item());
+        var newItems = new List<ItemSample>(count);
+        for (var i = 0; i < count; i++) newItems.Add(new ItemSample());
         Items.AddRange(newItems);
-        Items.Notify();
+        //Items.Notify();
 
         UpdateInfo();
     }
@@ -26,7 +26,7 @@ public partial class Case01ViewModel : BaseViewModel
     private void ClearItems()
     {
         Items.Clear();
-        Items.Notify();
+        Items = new ObservableListList<ItemSample>();
         UpdateInfo();
     }
 
