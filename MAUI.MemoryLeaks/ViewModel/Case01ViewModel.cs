@@ -17,7 +17,6 @@ public partial class Case01ViewModel : BaseViewModel
         var newItems = new List<ItemSample>(count);
         for (var i = 0; i < count; i++) newItems.Add(new ItemSample());
         Items.AddRange(newItems);
-        UpdateInfo();
     }
 
     [RelayCommand]
@@ -26,12 +25,11 @@ public partial class Case01ViewModel : BaseViewModel
         Items.Clear();
         // The following line is required to avoids memory leaks in case other class than ObservableComposedList is used.
         //Items = new ObservableInheritedCollection<ItemSample>();
-        UpdateInfo();
     }
 
-    protected override void UpdateInfo()
+    protected override void RefreshInfo()
     {
-        base.UpdateInfo();
+        base.RefreshInfo();
         ItemsCount = UpdateItemsCount();
     }
 

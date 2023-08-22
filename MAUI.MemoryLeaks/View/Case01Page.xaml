@@ -34,16 +34,6 @@
                 Margin="10"
                 Text="Rebind"
                 Clicked="Button_OnClicked" />
-
-            <Button
-                Margin="10"
-                Text="Update info"
-                Command="{Binding UpdateInfoCommand}" />
-
-            <Button
-                Margin="10"
-                Text="Call Garbage Collector"
-                Command="{Binding CallGarbageCollectorCommand}" />
         </StackLayout>
 
         <CollectionView

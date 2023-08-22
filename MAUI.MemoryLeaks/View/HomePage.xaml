@@ -29,16 +29,6 @@
 
         <Button
             Margin="10"
-            Text="Update info"
-            Command="{Binding UpdateInfoCommand}" />
-
-        <Button
-            Margin="10"
-            Text="Call Garbage Collector"
-            Command="{Binding CallGarbageCollectorCommand}" />
-
-        <Button
-            Margin="10"
             Text="Case 1: ObservableCollection"
             Command="{Binding NavigateToCase01Command}" />
     </VerticalStackLayout>

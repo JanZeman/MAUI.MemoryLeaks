@@ -3,9 +3,13 @@ using System.Reflection;
 
 namespace MAUI.MemoryLeaks.ViewModel;
 
-[ObservableObject]
-public abstract partial class BaseViewModel
+public abstract partial class BaseViewModel : ObservableObject
 {
+    private const int RefreshInfoInSeconds = 1;
+    private const int CallGarbageCollectorInSeconds = 3;
+
+    private readonly Timer _refreshInfoTimer, _callGarbageCollectorTimer;
+
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsNotBusy))]
     private bool _isBusy;
@@ -15,33 +19,41 @@ public abstract partial class BaseViewModel
     [ObservableProperty]
     private string _memorySize;
 
-    public virtual void OnAppearing() { }
+    protected BaseViewModel()
+    {
+        _refreshInfoTimer = new Timer(_ => MainThread.InvokeOnMainThreadAsync(RefreshInfo), null, Timeout.InfiniteTimeSpan, Timeout.InfiniteTimeSpan);
+        _callGarbageCollectorTimer = new Timer(_ => MainThread.InvokeOnMainThreadAsync(CallGarbageCollector), null, Timeout.InfiniteTimeSpan, Timeout.InfiniteTimeSpan);
+    }
+
+    public virtual void OnAppearing()
+    {
+        // Start the timers
+        _refreshInfoTimer.Change(TimeSpan.FromSeconds(RefreshInfoInSeconds), TimeSpan.FromSeconds(RefreshInfoInSeconds));
+        _callGarbageCollectorTimer.Change(TimeSpan.FromSeconds(CallGarbageCollectorInSeconds), TimeSpan.FromSeconds(CallGarbageCollectorInSeconds));
+    }
 
     public virtual void OnLoaded()
     {
-        UpdateInfo();
-
-        MainThread.InvokeOnMainThreadAsync(async () =>
-        {
-            await Task.Delay(3000);
-            UpdateInfo();
-        });
+        RefreshInfo();
     }
 
-    public virtual void OnDisappearing() { }
+    public virtual void OnDisappearing()
+    {
+        // Stop the timers
+        _refreshInfoTimer.Change(Timeout.InfiniteTimeSpan, Timeout.InfiniteTimeSpan);
+        _callGarbageCollectorTimer.Change(Timeout.InfiniteTimeSpan, Timeout.InfiniteTimeSpan);
+    }
 
-    [RelayCommand]
-    private void CallGarbageCollector()
+    private static void CallGarbageCollector()
     {
         GC.Collect();
         GC.WaitForPendingFinalizers();
         GC.Collect();
-        UpdateInfo();
     }
 
-    [RelayCommand]
-    protected virtual void UpdateInfo()
+    protected virtual void RefreshInfo()
     {
+        //CallGarbageCollector();
         MemorySize = UpdateMemoryUsage(null);
     }
 
