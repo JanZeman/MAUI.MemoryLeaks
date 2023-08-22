@@ -6,7 +6,7 @@ namespace MAUI.MemoryLeaks.ViewModel;
 public abstract partial class BaseViewModel : ObservableObject
 {
     private const int RefreshInfoInSeconds = 1;
-    private const int CallGarbageCollectorInSeconds = 3;
+    private const int CallGarbageCollectorInSeconds = 5;
 
     private readonly Timer _refreshInfoTimer, _callGarbageCollectorTimer;
 
@@ -54,10 +54,10 @@ public abstract partial class BaseViewModel : ObservableObject
     protected virtual void RefreshInfo()
     {
         //CallGarbageCollector();
-        MemorySize = UpdateMemoryUsage(null);
+        MemorySize = UpdateMemoryUsage();
     }
 
-    private static string UpdateMemoryUsage(object state)
+    private static string UpdateMemoryUsage()
     {
         // Get the current process
         var currentProcess = Process.GetCurrentProcess();
@@ -85,7 +85,7 @@ public abstract partial class BaseViewModel : ObservableObject
             suffixIndex++;
         }
 
-        return $"{adjustedBytes:0.##} {suffixes[suffixIndex]}";
+        return $"{adjustedBytes:0.00} {suffixes[suffixIndex]}";
     }
 
     private string GetMemoryUsage()
