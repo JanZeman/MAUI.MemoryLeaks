@@ -2,7 +2,7 @@
 <view:MauiPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="MAUI.MemoryLeaks.View.Case01Page"
+    x:Class="MAUI.MemoryLeaks.View.Case01FixPage"
     xmlns:view="clr-namespace:MAUI.MemoryLeaks.View"
     xmlns:viewmodel="clr-namespace:MAUI.MemoryLeaks.ViewModel"
     xmlns:controls="clr-namespace:MAUI.MemoryLeaks.Controls"

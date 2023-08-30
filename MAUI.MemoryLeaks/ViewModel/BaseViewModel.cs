@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Reflection;
 
 namespace MAUI.MemoryLeaks.ViewModel;
 
@@ -53,7 +52,6 @@ public abstract partial class BaseViewModel : ObservableObject
 
     protected virtual void RefreshInfo()
     {
-        //CallGarbageCollector();
         MemorySize = UpdateMemoryUsage();
     }
 
@@ -86,30 +84,5 @@ public abstract partial class BaseViewModel : ObservableObject
         }
 
         return $"{adjustedBytes:0.00} {suffixes[suffixIndex]}";
-    }
-
-    private string GetMemoryUsage()
-    {
-        try
-        {
-            var memory = GC.GetTotalMemory(true);
-
-            string fname = Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location);
-
-            ProcessStartInfo ps = new ProcessStartInfo("tasklist");
-            ps.Arguments = "/fi \"IMAGENAME eq " + fname + ".*\" /FO CSV /NH";
-            ps.RedirectStandardOutput = true;
-            ps.CreateNoWindow = true;
-            ps.UseShellExecute = false;
-            var p = Process.Start(ps);
-            if (p.WaitForExit(1000))
-            {
-                var s = p.StandardOutput.ReadToEnd().Split('\"');
-                var result = s[9].Replace("\"", "");
-                return result;
-            }
-        }
-        catch { }
-        return "Unable to get memory usage";
     }
 }

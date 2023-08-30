@@ -3,6 +3,10 @@ using System.Collections.Specialized;
 
 namespace MAUI.MemoryLeaks;
 
+/// <summary>
+/// The ordinary ObservableCollection with AddRange() method.
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public class ObservableInheritedCollection<T> : ObservableCollection<T>
 {
     private bool _suppressNotification = false;
@@ -19,16 +23,19 @@ public class ObservableInheritedCollection<T> : ObservableCollection<T>
             base.OnCollectionChanged(e);
     }
 
-    public void AddRange(IEnumerable<T> collection)
+    public void AddRange(IEnumerable<T> enumerable)
     {
-        ArgumentNullException.ThrowIfNull(collection);
+        if (enumerable == null) return;
+        var list = enumerable.ToList();
+        if (list.Count == 0) return;
 
         _suppressNotification = true;
 
-        foreach (var item in collection)
+        foreach (var item in list)
             Add(item);
 
         _suppressNotification = false;
+
         OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
     }
 }

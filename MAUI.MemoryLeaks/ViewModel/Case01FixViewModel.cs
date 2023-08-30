@@ -2,7 +2,7 @@ using MAUI.MemoryLeaks.Model;
 
 namespace MAUI.MemoryLeaks.ViewModel;
 
-public partial class Case01ViewModel : BaseViewModel
+public partial class Case01FixViewModel : BaseViewModel
 {
     private const int ItemsToAddEachRound = 1000000;
 
@@ -10,7 +10,7 @@ public partial class Case01ViewModel : BaseViewModel
     private string _itemsCount;
 
     [ObservableProperty]
-    private ObservableInheritedCollection<ItemSample> _items = new();
+    private ObservableInheritedList<ItemSample> _items = new();
 
     [RelayCommand]
     private void AddItems()
@@ -24,8 +24,6 @@ public partial class Case01ViewModel : BaseViewModel
     private void ClearItems()
     {
         Items.Clear();
-        // The following line will also 'fix' the memory leak.
-        //Items = new ObservableInheritedCollection<ItemSample>();
     }
 
     protected override void RefreshInfo()

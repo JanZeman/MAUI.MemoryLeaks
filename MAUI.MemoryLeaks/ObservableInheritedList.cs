@@ -38,18 +38,17 @@ public class ObservableInheritedList<T> : List<T>, INotifyCollectionChanged
 
     public new bool Remove(T item)
     {
-        int index = base.IndexOf(item);
-        bool removed = base.Remove(item);
+        var index = base.IndexOf(item);
+        var removed = base.Remove(item);
         if (removed)
-        {
             OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, item, index));
-        }
+        
         return removed;
     }
 
     public new void RemoveAt(int index)
     {
-        T removedItem = base[index];
+        var removedItem = base[index];
         base.RemoveAt(index);
         OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, removedItem, index));
     }
