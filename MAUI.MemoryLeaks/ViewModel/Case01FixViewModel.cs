@@ -6,6 +6,11 @@ public partial class Case01FixViewModel : BaseViewModel
 {
     private const int ItemsToAddEachRound = 1000000;
 
+    public Case01FixViewModel()
+    {
+        PageName = "Case 1 Fix";
+    }
+
     [ObservableProperty]
     private string _itemsCount;
 

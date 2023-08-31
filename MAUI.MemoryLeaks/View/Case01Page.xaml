@@ -7,7 +7,7 @@
     xmlns:viewmodel="clr-namespace:MAUI.MemoryLeaks.ViewModel"
     xmlns:controls="clr-namespace:MAUI.MemoryLeaks.Controls"
     x:DataType="viewmodel:Case01ViewModel"
-    Title="Case01Page">
+    Title="{Binding PageName}">
     <Grid RowDefinitions="Auto, *">
         <StackLayout Grid.Row="0" Margin="10">
             <Label

@@ -10,6 +10,9 @@ public abstract partial class BaseViewModel : ObservableObject
     private readonly Timer _refreshInfoTimer, _callGarbageCollectorTimer;
 
     [ObservableProperty]
+    private string _pageName;
+
+    [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsNotBusy))]
     private bool _isBusy;
 

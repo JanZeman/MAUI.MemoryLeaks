@@ -35,16 +35,22 @@ public partial class App : Application
 
     private void Appearing(object sender, Page page)
     {
-        if (!page.GetType().Name.Contains(nameof(Page)))
-            return;
+        if (!page.GetType().Name.Contains(nameof(Page))) return;
 
-        if (page.BindingContext is not BaseViewModel viewModel)
+        if (page.BindingContext is BaseViewModel viewModel)
         {
-            viewModel = ResolveViewModel(page);
-            page.BindingContext = viewModel;
+            viewModel.OnAppearing();
+            return;
         }
 
-        viewModel.OnAppearing();
+        var viewModelType = GetType().Assembly.GetTypes()
+            .Where(x => x.Name == page.GetType().Name.Replace(nameof(Page), "ViewModel"))?
+            .FirstOrDefault();
+
+        if (viewModelType == null || MauiProgram.Services.GetService(viewModelType) is not BaseViewModel registeredViewModel) return;
+
+        page.BindingContext = registeredViewModel;
+        registeredViewModel.OnAppearing();
     }
 
     private void Disappearing(object sender, Page page)

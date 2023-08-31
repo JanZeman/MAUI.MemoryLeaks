@@ -6,7 +6,7 @@
     xmlns:view="clr-namespace:MAUI.MemoryLeaks.View"
     xmlns:viewmodel="clr-namespace:MAUI.MemoryLeaks.ViewModel"
     x:DataType="viewmodel:HomeViewModel"
-    Title="Home">
+    Title="{Binding PageName}">
     <VerticalStackLayout Padding="10">
         <Label 
             Text="{Binding Motivation}"
@@ -30,7 +30,7 @@
         <Button
             Margin="10"
             Text="Case 1 Fix: ObservableComposedList"
-            Command="{Binding NavigateToCase01Command}" />
+            Command="{Binding NavigateToCase01FixCommand}" />
 
         <Label
             Text="{Binding Description}"
