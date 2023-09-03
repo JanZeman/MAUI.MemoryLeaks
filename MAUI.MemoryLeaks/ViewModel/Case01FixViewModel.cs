@@ -15,7 +15,7 @@ public partial class Case01FixViewModel : BaseViewModel
     private string _itemsCount;
 
     [ObservableProperty]
-    private ObservableInheritedList<ItemSample> _items = new();
+    private ObservableInheritedCollection<ItemSample> _items = new();
 
     [RelayCommand]
     private void AddItems()
@@ -29,6 +29,9 @@ public partial class Case01FixViewModel : BaseViewModel
     private void ClearItems()
     {
         Items.Clear();
+        // The next line should not be necessary but it avoids memory leaks on MAUI Windows application.
+        // Question is what is the root cause, Microsoft.Maui.Controls.Handlers.Items.CollectionViewHandler maybe?
+        Items = new ObservableInheritedCollection<ItemSample>();
     }
 
     protected override void RefreshInfo()

@@ -46,11 +46,22 @@ public abstract partial class BaseViewModel : ObservableObject
         _callGarbageCollectorTimer.Change(Timeout.InfiniteTimeSpan, Timeout.InfiniteTimeSpan);
     }
 
+    /// <summary>
+    /// Attempt to execute 'aggressive' garbage collection
+    /// </summary>
     private static void CallGarbageCollector()
     {
-        GC.Collect();
+        // Collect all generations with forced mode
+        GC.Collect(2, GCCollectionMode.Forced);
+
+        // Wait for all finalizers to complete before continuing
+        // This ensures that all finalizable objects are finalized.
         GC.WaitForPendingFinalizers();
-        GC.Collect();
+
+        // Compact the Large Object Heap (LOH)
+        // This is available starting from .NET 5. If you're using an earlier version, 
+        // you might want to conditionally compile this or remove it.
+        GC.Collect(2, GCCollectionMode.Forced, true, true);
     }
 
     protected virtual void RefreshInfo()
