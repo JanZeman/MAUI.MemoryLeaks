@@ -29,7 +29,7 @@
 
         <Button
             Margin="10"
-            Text="Case 1 Fix: ObservableComposedList"
+            Text="Case 1 Fix: ObservableInheritedList"
             Command="{Binding NavigateToCase01FixCommand}" />
 
         <Label
