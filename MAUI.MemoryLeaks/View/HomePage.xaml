@@ -23,13 +23,18 @@
             Margin="0,20,0,20" />
 
         <Button
-            Margin="10"
-            Text="Case 1: ObservableCollection"
+            Margin="5"
+            Text="ObservableCollection"
             Command="{Binding NavigateToCase01Command}" />
 
         <Button
-            Margin="10"
-            Text="Case 1 Fix: ObservableInheritedList"
+            Margin="5"
+            Text="Re-assign ObservableCollection"
+            Command="{Binding NavigateToCase01FixCommand}" />
+
+        <Button
+            Margin="5"
+            Text="ObservableList"
             Command="{Binding NavigateToCase01FixCommand}" />
 
         <Label

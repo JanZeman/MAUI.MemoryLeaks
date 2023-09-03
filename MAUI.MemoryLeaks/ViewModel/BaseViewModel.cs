@@ -6,11 +6,15 @@ public abstract partial class BaseViewModel : ObservableObject
 {
     private const int RefreshInfoInSeconds = 1;
     private const int CallGarbageCollectorInSeconds = 5;
+    protected const int TestItemsCollectionCount = 1000 * 1000;
 
     private readonly Timer _refreshInfoTimer, _callGarbageCollectorTimer;
 
     [ObservableProperty]
     private string _pageName;
+
+    [ObservableProperty]
+    private string _description;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsNotBusy))]

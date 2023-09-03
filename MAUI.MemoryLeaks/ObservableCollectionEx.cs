@@ -7,15 +7,15 @@ namespace MAUI.MemoryLeaks;
 /// The ordinary ObservableCollection with AddRange() method.
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public class ObservableInheritedCollection<T> : ObservableCollection<T>
+public class ObservableCollectionEx<T> : ObservableCollection<T>
 {
     private bool _suppressNotification = false;
 
-    public ObservableInheritedCollection() : base() { }
+    public ObservableCollectionEx() : base() { }
 
-    public ObservableInheritedCollection(IEnumerable<T> collection) : base(collection) { }
+    public ObservableCollectionEx(IEnumerable<T> collection) : base(collection) { }
 
-    public ObservableInheritedCollection(List<T> list) : base(list) { }
+    public ObservableCollectionEx(List<T> list) : base(list) { }
 
     protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
     {
