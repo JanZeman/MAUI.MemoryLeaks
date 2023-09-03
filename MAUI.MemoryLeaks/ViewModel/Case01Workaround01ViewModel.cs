@@ -9,7 +9,7 @@ public partial class Case01Workaround01ViewModel : BaseViewModel
         PageName = "Case 1, Workaround 1";
         Description =
             "Compared to the first flow the memory will be freed up without having to lave this page. Just wait long enough, i.e. even minutes." + Environment.NewLine + Environment.NewLine +
-            "It is because ObservableCollection is re-created upon each clear. See the corresponding code. That is however just an workaround IMHO.";
+            "It is because ObservableCollection is re-created upon each clear. See the corresponding code. That is however just a workaround IMHO.";
     }
 
     [ObservableProperty]

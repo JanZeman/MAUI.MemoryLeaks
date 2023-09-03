@@ -30,12 +30,12 @@
         <Button
             Margin="5"
             Text="Re-assign ObservableCollection"
-            Command="{Binding NavigateToCase01FixCommand}" />
+            Command="{Binding NavigateToCase01Workaround01Command}" />
 
         <Button
             Margin="5"
             Text="ObservableList"
-            Command="{Binding NavigateToCase01FixCommand}" />
+            Command="{Binding NavigateToCase01Workaround02Command}" />
 
         <Label
             Text="{Binding Description}"

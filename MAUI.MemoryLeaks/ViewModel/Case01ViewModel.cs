@@ -9,7 +9,7 @@ public partial class Case01ViewModel : BaseViewModel
         PageName = "Case 1";
         Description =
             "Note down the memory used. Add the items, wait for the UI to populate and then clear the items again. Now wait for few minutes and observe." + Environment.NewLine + Environment.NewLine +
-            "Even after minutes of waiting you will find the memory consumption approx. 20 MB higher then before. It will be freed up first after you leave this page and navigate back to home screen.";
+            "Even after minutes of waiting you will find the memory consumption approx. 20-30 MB higher then before. It will be freed up first after you leave this page and navigate back to home screen.";
     }
 
     [ObservableProperty]
