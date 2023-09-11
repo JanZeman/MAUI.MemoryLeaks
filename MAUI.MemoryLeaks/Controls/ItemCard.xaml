@@ -6,8 +6,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:model="clr-namespace:MAUI.MemoryLeaks.Model">
 
-    <StackLayout Orientation="Horizontal">
-        <Label Text="{Binding Value}" />
-        <Label Text=" (using template)" />
-    </StackLayout>
+    <Grid Padding="0" ColumnDefinitions="80,*">
+        <!--<Image Aspect="AspectFill" WidthRequest="64" HeightRequest="64" Source="{Binding Image}" />-->
+        <Image Aspect="AspectFill" WidthRequest="64" HeightRequest="64" Source="dotnet_bot.png" />
+        <VerticalStackLayout VerticalOptions="Center" Grid.Column="1" Padding="3">
+            <Label Text="{Binding Path=ValueSample}" />
+            <Label Text="(item template used)" />
+        </VerticalStackLayout>
+    </Grid>
 </Grid>
