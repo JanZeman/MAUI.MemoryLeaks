@@ -2,17 +2,17 @@
 
 public class ItemSample
 {
-    ////private static readonly List<Item> SimulatedLeakedObjects = new ();
+    ////private static readonly List<Item> SimulatedLeakedObjects = new();
 
     private static readonly Random Random = new();
 
     private static int _historyNo;
 
-    public string Value { get; }
+    public string ValueSample { get; }
 
     public ItemSample()
     {
-        Value = $"{++_historyNo}: {RandomString(7)}";
+        ValueSample = $"{++_historyNo}: {RandomString(7)}";
 
         // Every time an Item instance is created, it adds itself to a static list.
         // This means even if you lose all other references to a that instance, it's still
@@ -29,6 +29,6 @@ public class ItemSample
 
     public override string ToString()
     {
-        return !string.IsNullOrWhiteSpace(Value) ? Value : base.ToString();
+        return !string.IsNullOrWhiteSpace(ValueSample) ? ValueSample : base.ToString();
     }
 }
