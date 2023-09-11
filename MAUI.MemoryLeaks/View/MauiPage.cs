@@ -14,10 +14,10 @@ public class MauiPage : ContentPage
 
     protected override void OnBindingContextChanged()
     {
+        base.OnBindingContextChanged();
+
         if (BindingContext is BaseViewModel viewModel)
             ViewModel = viewModel;
-
-        base.OnBindingContextChanged();
     }
 
     private void OnWindowActivated(object sender, EventArgs e)

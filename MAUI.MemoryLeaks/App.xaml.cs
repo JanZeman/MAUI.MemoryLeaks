@@ -10,8 +10,8 @@ public partial class App : Application
     {
         InitializeComponent();
 
-        PageAppearing += Appearing;
-        PageDisappearing += Disappearing;
+        PageAppearing += OnPageAppearing;
+        PageDisappearing += OnPageDisappearing;
 
         MainPage = new AppShell();
     }
@@ -24,36 +24,34 @@ public partial class App : Application
 
     private BaseViewModel ResolveViewModel(Page page)
     {
-        var viewModelType = GetType().Assembly.GetTypes().Where(x => x.Name == page.GetType().Name.Replace(nameof(Page), "ViewModel")).ToList();
+        if (page is not View.MauiPage mauiPage) return null;
 
-        if (!viewModelType.Any())
+        var viewModelType = GetType().Assembly
+            .GetTypes().FirstOrDefault(x => x.Name == page.GetType().Name.Replace(nameof(Page), "ViewModel"));
+
+        if (viewModelType == null)
             return null;
 
-        var resolvedViewModel = MauiProgram.Services.GetService(viewModelType.First()) as BaseViewModel;
-        return resolvedViewModel;
+        var viewModel = MauiProgram.Services.GetService(viewModelType) as BaseViewModel;
+        return viewModel;
     }
 
-    private void Appearing(object sender, Page page)
+    private void OnPageAppearing(object sender, Page page)
     {
-        if (!page.GetType().Name.Contains(nameof(Page))) return;
-
         if (page.BindingContext is BaseViewModel viewModel)
         {
             viewModel.OnAppearing();
             return;
         }
 
-        var viewModelType = GetType().Assembly.GetTypes()
-            .Where(x => x.Name == page.GetType().Name.Replace(nameof(Page), "ViewModel"))?
-            .FirstOrDefault();
+        viewModel = ResolveViewModel(page);
+        if (viewModel == null) return;
 
-        if (viewModelType == null || MauiProgram.Services.GetService(viewModelType) is not BaseViewModel registeredViewModel) return;
-
-        page.BindingContext = registeredViewModel;
-        registeredViewModel.OnAppearing();
+        page.BindingContext = viewModel;
+        viewModel.OnAppearing();
     }
 
-    private void Disappearing(object sender, Page page)
+    private static void OnPageDisappearing(object sender, Page page)
     {
         if (page.BindingContext is BaseViewModel viewModel)
             viewModel.OnDisappearing();
@@ -61,7 +59,7 @@ public partial class App : Application
 
     public void Dispose()
     {
-        PageAppearing -= Appearing;
-        PageDisappearing -= Disappearing;
+        PageAppearing -= OnPageAppearing;
+        PageDisappearing -= OnPageDisappearing;
     }
 }
