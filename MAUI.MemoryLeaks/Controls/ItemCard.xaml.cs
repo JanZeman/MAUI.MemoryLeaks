@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using MAUI.MemoryLeaks.Model;
 
 namespace MAUI.MemoryLeaks.Controls;
@@ -18,9 +17,7 @@ public partial class ItemCard
 
         base.OnBindingContextChanged();
 
-#if DEBUG
         // Log or debug the change
-        Debug.WriteLine($"ItemCard BindingContext is: {BindingContext?.GetType().Name ?? "null"}");
-#endif
+        ////Debug.WriteLine($"ItemCard BindingContext is: {BindingContext?.GetType().Name ?? "null"}");
     }
 }
