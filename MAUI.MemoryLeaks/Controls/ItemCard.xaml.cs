@@ -12,7 +12,7 @@ public partial class ItemCard
 
     protected override void OnBindingContextChanged()
     {
-        // Workaround for the Warning: 'ValueSample' property not found on 'MAUI.MemoryLeaks.ViewModel.Case01ViewModel', target property: 'Microsoft.Maui.Controls.Label.Text'
+        // Workaround for the 'not found' warning when BindingContext is temporarily set by the MAUI framework to ViewModel (visual inheritance) instead to the expected class
         if (BindingContext is not ItemSample)
             return;
 
