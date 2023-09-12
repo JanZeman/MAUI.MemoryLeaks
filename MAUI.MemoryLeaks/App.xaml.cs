@@ -1,6 +1,4 @@
-﻿using MAUI.MemoryLeaks.ViewModel;
-
-namespace MAUI.MemoryLeaks;
+﻿namespace MAUI.MemoryLeaks;
 
 public partial class App : Application
 {
@@ -24,7 +22,7 @@ public partial class App : Application
 
     private BaseViewModel ResolveViewModel(Page page)
     {
-        if (page is not View.MauiPage mauiPage) return null;
+        if (page is not MauiPage) return null;
 
         var viewModelType = GetType().Assembly
             .GetTypes().FirstOrDefault(x => x.Name == page.GetType().Name.Replace(nameof(Page), "ViewModel"));
