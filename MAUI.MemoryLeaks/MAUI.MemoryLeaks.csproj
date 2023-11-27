@@ -63,9 +63,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="View\Case01Workaround02Page.xaml.cs">
-	    <DependentUpon>Case01Workaround02Page.xaml</DependentUpon>
-	  </Compile>
 	  <Compile Update="View\Case01Workaround01Page.xaml.cs">
 	    <DependentUpon>Case01Workaround01Page.xaml</DependentUpon>
 	  </Compile>
@@ -73,9 +70,6 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Controls\ItemCard.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="View\Case01Workaround02Page.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\Case01Workaround01Page.xaml">

@@ -31,10 +31,4 @@ public partial class HomeViewModel : BaseViewModel
     {
         await Shell.Current.GoToAsync(nameof(Case01Workaround01Page), true);
     }
-
-    [RelayCommand]
-    private async void NavigateToCase01Workaround02()
-    {
-        await Shell.Current.GoToAsync(nameof(Case01Workaround02Page), true);
-    }
 }
