@@ -8,10 +8,11 @@
 
     <Grid Padding="0" ColumnDefinitions="80,*">
         <!--<Image Aspect="AspectFill" WidthRequest="64" HeightRequest="64" Source="{Binding Image}" />-->
-        <Image Aspect="AspectFill" WidthRequest="64" HeightRequest="64" Source="dotnet_bot_png.png" />
+        <!--<Image Aspect="AspectFill" WidthRequest="64" HeightRequest="64" Source="dotnet_bot_png.png" />-->
         <VerticalStackLayout VerticalOptions="Center" Grid.Column="1" Padding="3">
-            <Label Text="{Binding Path=ValueSample}" />
-            <Label Text="(item template used)" />
+            <!--<Label Text="{Binding Path=ValueSample}" />-->
+            <Label Text="Binding disabled" />
+            <Label Text="(from item template)" />
         </VerticalStackLayout>
     </Grid>
 </Grid>
