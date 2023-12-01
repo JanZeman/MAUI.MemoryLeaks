@@ -9,7 +9,7 @@ public partial class HomeViewModel : BaseViewModel
     {
         PageName = "Leaks";
         Motivation = "It is end of 2023, and we are still encountering memory leaks in MAUI. This project is an attempt to target some of them with the hope these will be fixed.";
-        Recommendation = "Click the buttons above to navigate to individual cases. The individual cases are not necessarily isolated, the app restart is recommended.";
+        Recommendation = "Click the buttons above to navigate to individual cases. These cases are not necessarily isolated, the app restart is recommended.";
         Description =
             "The main target is Microsoft Windows. Ideally please debug together with a feature rich memory profiler tool, e.g. JetBrains DotMemory." +
             $"{Environment.NewLine}{Environment.NewLine}" +
