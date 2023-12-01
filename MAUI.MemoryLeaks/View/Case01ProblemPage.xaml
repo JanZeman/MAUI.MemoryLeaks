@@ -2,23 +2,19 @@
 <view:MauiPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="MAUI.MemoryLeaks.View.Case01Workaround01Page"
+    x:Class="MAUI.MemoryLeaks.View.Case01ProblemPage"
     xmlns:view="clr-namespace:MAUI.MemoryLeaks.View"
     xmlns:viewmodel="clr-namespace:MAUI.MemoryLeaks.ViewModel"
-    xmlns:controls="clr-namespace:MAUI.MemoryLeaks.Controls"
-    x:DataType="viewmodel:Case01ViewModel"
+    x:DataType="viewmodel:Case01ProblemViewModel"
     Title="{Binding PageName}">
-    <Grid RowDefinitions="Auto, *">
-        <StackLayout Grid.Row="0" Margin="10">
-            <Label
-                Text="{Binding MemorySize}"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
+    <Grid RowDefinitions="Auto, *" Padding="15">
+        <VerticalStackLayout Grid.Row="0">
+            <view:MemoryUsageView />
 
             <Label
-                Text="{Binding ItemsCount}"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
+                Margin="5,5,5,15"
+                HorizontalOptions="Start"
+                Text="{Binding ItemsCount}" />
 
             <Button
                 Margin="10"
@@ -31,11 +27,18 @@
                 Command="{Binding ClearItemsCommand}" />
 
             <Label
+                HorizontalOptions="Start"
                 Margin="10"
-                Text="{Binding Description}"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
-        </StackLayout>
+                FontAttributes="Bold"
+                TextColor="Red"
+                Text="{Binding Recommendation}" />
+
+            <Label
+                HorizontalOptions="Start"
+                Margin="10, 25, 10, 0"
+                FontAttributes="Italic"
+                Text="{Binding Description}" />
+        </VerticalStackLayout>
 
         <CollectionView
             Grid.Row="1"

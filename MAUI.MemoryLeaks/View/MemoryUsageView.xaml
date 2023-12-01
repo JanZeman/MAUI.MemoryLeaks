@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI.MemoryLeaks.View.MemoryUsageView"
+             xmlns:viewmodel="clr-namespace:MAUI.MemoryLeaks.ViewModel"
+             x:DataType="viewmodel:BaseViewModel">
+    <VerticalStackLayout Margin="0,10,0,10">
+        <HorizontalStackLayout HorizontalOptions="Start" Margin="5,0,5,0">
+            <Label Text="{Binding OriginalMemoryUsageDescription}"/>
+            <Label Margin="5,0,0,0" Text="{Binding OriginalMemoryUsage}" FontAttributes="Bold" />
+        </HorizontalStackLayout>
+
+
+        <HorizontalStackLayout HorizontalOptions="Start" Margin="5,0,5,0">
+            <Label Text="{Binding CurrentMemoryUsageDescription}" />
+            <Label Margin="5,0,0,0" Text="{Binding CurrentMemoryUsage}" FontAttributes="Bold" />
+        </HorizontalStackLayout>
+
+        <Label HorizontalOptions="Start" Margin="5,0,5,10" Text="{Binding GarbageCollectorIllustration}" />
+    </VerticalStackLayout>
+</ContentView>

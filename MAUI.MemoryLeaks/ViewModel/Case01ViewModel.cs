@@ -1,46 +1,26 @@
-using MAUI.MemoryLeaks.Model;
-
 namespace MAUI.MemoryLeaks.ViewModel;
 
 public partial class Case01ViewModel : BaseViewModel
 {
     public Case01ViewModel()
     {
-        PageName = "Case 1";
+        PageName = "Case 1: Source reassignment required";
+        Recommendation = "Compare the 'Problem' and 'Solution' above";
         Description =
-            "Note down the memory used. Add the items, wait for the UI to populate and then clear the items again. Now wait for few minutes and observe." + Environment.NewLine + Environment.NewLine +
-            "Even after minutes of waiting you will find the memory consumption approx. 20-30 MB higher then before. It will be freed up first after you leave this page and navigate back to home screen.";
-    }
-
-    [ObservableProperty]
-    private string _itemsCount;
-
-    [ObservableProperty]
-    private ObservableCollectionEx<ItemSample> _items = new();
-
-    [RelayCommand]
-    private void AddItems()
-    {
-        IsBusy = true;
-        var newItems = new List<ItemSample>(TestItemsCollectionCount);
-        for (var i = 0; i < TestItemsCollectionCount; i++) newItems.Add(new ItemSample());
-        Items.AddRange(newItems);
-        IsBusy = false;
+            "CollectionView should, to my best understanding, free up all memory after all its items are removed." + 
+            Environment.NewLine + Environment.NewLine +
+            "That is however not the case. Please compare the 'Problem' and 'Solution' above.";
     }
 
     [RelayCommand]
-    private void ClearItems()
+    private async void OpenCase01Problem()
     {
-        IsBusy = true;
-        Items.Clear();
-        // The following line will also 'fix' the memory leak.
-        //Items = new ObservableCollectionEx<ItemSample>();
-        IsBusy = false;
+        await Shell.Current.GoToAsync(nameof(Case01ProblemPage), true);
     }
 
-    protected override void RefreshInfo()
+    [RelayCommand]
+    private async void OpenCase01Solution()
     {
-        base.RefreshInfo();
-        ItemsCount = $"Items count: {Items.Count}";
+        await Shell.Current.GoToAsync(nameof(Case01SolutionPage), true);
     }
 }

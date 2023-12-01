@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<view:MauiPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUI.MemoryLeaks.View.Case01SolutionPage"
+    xmlns:view="clr-namespace:MAUI.MemoryLeaks.View"
+    xmlns:viewmodel="clr-namespace:MAUI.MemoryLeaks.ViewModel"
+    x:DataType="viewmodel:Case01SolutionViewModel"
+    Title="{Binding PageName}">
+    <Grid RowDefinitions="Auto, *" Padding="15">
+        <VerticalStackLayout Grid.Row="0">
+            <view:MemoryUsageView />
+
+            <Label
+                Margin="5,5,5,15"
+                HorizontalOptions="Start"
+                Text="{Binding ItemsCount}" />
+
+            <Button
+                Margin="10"
+                Text="Add items"
+                Command="{Binding AddItemsCommand}" />
+
+            <Button
+                Margin="10"
+                Text="Clear items"
+                Command="{Binding ClearItemsCommand}" />
+
+            <Label
+                HorizontalOptions="Start"
+                Margin="10"
+                FontAttributes="Bold"
+                TextColor="Red"
+                Text="{Binding Recommendation}" />
+
+            <Label
+                HorizontalOptions="Start"
+                Margin="10, 25, 10, 0"
+                FontAttributes="Italic"
+                Text="{Binding Description}" />
+        </VerticalStackLayout>
+
+        <CollectionView
+            Grid.Row="1"
+            Margin="10"
+            ItemsSource="{Binding Items}">
+
+            <!--<CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <controls:ItemCard/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>-->
+        </CollectionView>
+    </Grid>
+</view:MauiPage>

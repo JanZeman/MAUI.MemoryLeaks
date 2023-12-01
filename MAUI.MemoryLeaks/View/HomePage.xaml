@@ -8,34 +8,31 @@
     x:DataType="viewmodel:HomeViewModel"
     Title="{Binding PageName}">
     <VerticalStackLayout Padding="10">
-        <Label 
+        <Label
+            HorizontalOptions="Start"
+            Margin="10,10,10,5"
             Text="{Binding Motivation}"
             FontAttributes="Italic"
-            FontSize="14"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"
-            Margin="0,0,20,0" />
+            FontSize="14" />
 
-        <Label
-            Text="{Binding MemorySize}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"
-            Margin="0,20,0,20" />
+        <view:MemoryUsageView Margin="5,10,5,0"/>
 
         <Button
-            Margin="5"
-            Text="ObservableCollection"
-            Command="{Binding NavigateToCase01Command}" />
-
-        <Button
-            Margin="5"
-            Text="Re-assign ObservableCollection"
-            Command="{Binding NavigateToCase01Workaround01Command}" />
+            Margin="10"
+            Text="Case 1: Source reassignment required"
+            Command="{Binding OpenCase01Command}" />
 
         <Label
-            Text="{Binding Description}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"
-            Margin="0,20,0,20" />
+            HorizontalOptions="Start"
+            Margin="10"
+            FontAttributes="Bold"
+            TextColor="Red"
+            Text="{Binding Recommendation}" />
+
+        <Label
+            HorizontalOptions="Start"
+            Margin="10, 25, 10, 0"
+            FontAttributes="Italic"
+            Text="{Binding Description}" />
     </VerticalStackLayout>
 </view:MauiPage>

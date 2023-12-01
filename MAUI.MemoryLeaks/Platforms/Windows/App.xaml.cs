@@ -37,7 +37,7 @@ namespace MAUI.MemoryLeaks.WinUI
             var windowHandle = WindowNative.GetWindowHandle(currentWindow);
             var windowId = Win32Interop.GetWindowIdFromWindow(windowHandle);
             var appWindow = AppWindow.GetFromWindowId(windowId);
-            appWindow.Resize(new SizeInt32(400, 800));
+            appWindow.Resize(new SizeInt32(520, 800));
         }
     }
 }

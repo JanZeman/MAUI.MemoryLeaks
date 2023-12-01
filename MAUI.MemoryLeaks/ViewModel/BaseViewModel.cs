@@ -1,14 +1,23 @@
 ﻿using System.Diagnostics;
+using MAUI.MemoryLeaks.Extensions;
 
 namespace MAUI.MemoryLeaks.ViewModel;
 
 public abstract partial class BaseViewModel : ObservableObject
 {
     private const int RefreshInfoInSeconds = 1;
-    private const int CallGarbageCollectorInSeconds = 5;
+    private const int CallGarbageCollectorInSeconds = 6;
+    private const int OriginalMemoryCounterMax = 2;
+
+    protected const string RecommendationAddItems = "Add items via the button above.";
+    protected const string RecommendationClearItems = "Wait for UI changes and then clear the items.";
+    protected const string RecommendationWaitAndObserve = "Now wait for few minutes and observe the memory behavior.";
     protected const int TestItemsCollectionCount = 1000 * 1000;
 
     private readonly Timer _refreshInfoTimer, _callGarbageCollectorTimer;
+
+    private int _originalMemoryCounter;
+    private int _garbageCollectorCountdown = CallGarbageCollectorInSeconds;
 
     [ObservableProperty]
     private string _pageName;
@@ -23,7 +32,22 @@ public abstract partial class BaseViewModel : ObservableObject
     public bool IsNotBusy => !IsBusy;
 
     [ObservableProperty]
-    private string _memorySize;
+    private string _originalMemoryUsageDescription = "Original memory usage: ";
+
+    [ObservableProperty]
+    private string _originalMemoryUsage;
+
+    [ObservableProperty]
+    private string _currentMemoryUsageDescription = "Current memory usage: ";
+
+    [ObservableProperty]
+    private string _currentMemoryUsage;
+
+    [ObservableProperty]
+    private string _garbageCollectorIllustration;
+
+    [ObservableProperty]
+    private string _recommendation;
 
     protected BaseViewModel()
     {
@@ -70,37 +94,34 @@ public abstract partial class BaseViewModel : ObservableObject
 
     protected virtual void RefreshInfo()
     {
-        MemorySize = UpdateMemoryUsage();
+        CurrentMemoryUsage = GetCurrentMemoryUsage();
+        GarbageCollectorIllustration = UpdateGarbageCollectorIllustration();
+        if (_originalMemoryCounter++ > OriginalMemoryCounterMax) return;
+        OriginalMemoryUsage = GetOriginalMemoryUsage();
     }
 
-    private static string UpdateMemoryUsage()
+    private string UpdateGarbageCollectorIllustration()
     {
-        // Get the current process
-        var currentProcess = Process.GetCurrentProcess();
+        var value = "Now";
 
-        // Get the working set (physical memory usage) of the process
-        var memoryUsage = currentProcess.PrivateMemorySize64;
+        if (_garbageCollectorCountdown-- > 1)
+            value = $"{_garbageCollectorCountdown} s";
+        else
+            _garbageCollectorCountdown = CallGarbageCollectorInSeconds;
 
-        // Convert bytes to a more human-readable format
-        var formattedMemoryUsage = FormatBytes(memoryUsage);
-
-        // Display the memory usage
-        return $"Private memory size: {formattedMemoryUsage}";
+        
+        return $"Explicit garbage collection: {value}";
     }
 
-    private static string FormatBytes(long bytes)
+    private static string GetOriginalMemoryUsage()
     {
-        string[] suffixes = { "B", "KB", "MB", "GB", "TB" };
-        var suffixIndex = 0;
-
-        double adjustedBytes = bytes;
-
-        while (adjustedBytes >= 1024 && suffixIndex < suffixes.Length - 1)
-        {
-            adjustedBytes /= 1024;
-            suffixIndex++;
-        }
-
-        return $"{adjustedBytes:0.00} {suffixes[suffixIndex]}";
+        return $"{GetMemoryUsage().FormatBytes()}";
     }
+
+    private static string GetCurrentMemoryUsage()
+    {
+        return $"{GetMemoryUsage().FormatBytes()}";
+    }
+
+    private static long GetMemoryUsage() => Process.GetCurrentProcess().PrivateMemorySize64;
 }

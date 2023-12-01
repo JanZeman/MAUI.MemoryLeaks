@@ -63,8 +63,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="View\Case01Workaround01Page.xaml.cs">
-	    <DependentUpon>Case01Workaround01Page.xaml</DependentUpon>
+	  <Compile Update="View\Case01Page.xaml.cs">
+	    <DependentUpon>Case01Page.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Case01ProblemPage.xaml.cs">
+	    <DependentUpon>Case01ProblemPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Case01SolutionPage.xaml.cs">
+	    <DependentUpon>Case01SolutionPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Case01ProblemPage.xaml.cs">
+	    <DependentUpon>Case01ProblemPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\MemoryUsageView.xaml.cs">
+	    <DependentUpon>MemoryUsageView.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -72,13 +84,19 @@
 	  <MauiXaml Update="Controls\ItemCard.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Case01Workaround01Page.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="View\Case01Page.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\Case01SolutionPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Case01ProblemPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\MemoryUsageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
