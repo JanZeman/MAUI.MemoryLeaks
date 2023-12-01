@@ -44,12 +44,6 @@
             Grid.Row="1"
             Margin="10"
             ItemsSource="{Binding Items}">
-
-            <!--<CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <controls:ItemCard/>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>-->
         </CollectionView>
     </Grid>
 </view:MauiPage>

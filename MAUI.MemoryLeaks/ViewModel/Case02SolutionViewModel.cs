@@ -3,11 +3,11 @@ using MAUI.MemoryLeaks.Model;
 
 namespace MAUI.MemoryLeaks.ViewModel;
 
-public partial class Case01SolutionViewModel : BaseViewModel
+public partial class Case02SolutionViewModel : BaseViewModel
 {
-    public Case01SolutionViewModel()
+    public Case02SolutionViewModel()
     {
-        PageName = "Case 1: Solution / Workaround";
+        PageName = "Case 2: Solution / Workaround";
         Recommendation = RecommendationAddItems;
         Description =
             "Compared to the first flow the memory will be freed up without having to leave this page. Just wait long enough, i.e. even minutes." +
@@ -24,13 +24,13 @@ public partial class Case01SolutionViewModel : BaseViewModel
     [RelayCommand]
     private void AddItems()
     {
-        Recommendation = RecommendationClearItemsCase01;
+        Recommendation = RecommendationClearItemsCase02;
         IsBusy = true;
 
         Task.Run(() =>
         {
-            var newItems = new List<ItemSample>(ItemsCountLarge);
-            for (var i = 0; i < ItemsCountLarge; i++)
+            var newItems = new List<ItemSample>(ItemsCountSmall);
+            for (var i = 0; i < ItemsCountSmall; i++)
                 newItems.Add(new ItemSample());
 
             MainThread.InvokeOnMainThreadAsync(() =>
@@ -46,7 +46,7 @@ public partial class Case01SolutionViewModel : BaseViewModel
     {
         if (Items.Count < 1) return;
 
-        Recommendation = RecommendationObserveCase01;
+        Recommendation = RecommendationObserveCase02;
         IsBusy = true;
 
         Task.Run(() =>
@@ -55,8 +55,7 @@ public partial class Case01SolutionViewModel : BaseViewModel
             {
                 Items.Clear();
 
-                // The next line is necessary to avoid memory leaks on MAUI Windows application.
-                // The real fix must probably be done in .NET code for ObservableCollection<T> class.
+                // The workaround from the Case 1 does not prevent leak of Case 2 type
                 Items = new();
                 IsBusy = false;
             });

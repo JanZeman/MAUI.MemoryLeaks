@@ -24,13 +24,13 @@ public partial class Case01ProblemViewModel : BaseViewModel
     [RelayCommand]
     private void AddItems()
     {
-        Recommendation = RecommendationClearItems;
+        Recommendation = RecommendationClearItemsCase01;
         IsBusy = true;
 
         Task.Run(() =>
         {
-            var newItems = new List<ItemSample>(TestItemsCollectionCount);
-            for (var i = 0; i < TestItemsCollectionCount; i++)
+            var newItems = new List<ItemSample>(ItemsCountLarge);
+            for (var i = 0; i < ItemsCountLarge; i++)
                 newItems.Add(new ItemSample());
 
             MainThread.InvokeOnMainThreadAsync(() =>
@@ -46,7 +46,7 @@ public partial class Case01ProblemViewModel : BaseViewModel
     {
         if (Items.Count < 1) return;
 
-        Recommendation = RecommendationWaitAndObserve;
+        Recommendation = RecommendationObserveCase01;
         IsBusy = true;
 
         Task.Run(() =>

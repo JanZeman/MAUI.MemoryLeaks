@@ -63,6 +63,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Controls\ItemCardWithoutBindings.xaml.cs">
+	    <DependentUpon>ItemCardWithoutBindings.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Case02SolutionPage.xaml.cs">
+	    <DependentUpon>Case02SolutionPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Case02ProblemPage.xaml.cs">
+	    <DependentUpon>Case02ProblemPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Case02Page.xaml.cs">
+	    <DependentUpon>Case02Page.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="View\Case01Page.xaml.cs">
 	    <DependentUpon>Case01Page.xaml</DependentUpon>
 	  </Compile>
@@ -81,7 +93,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Controls\ItemCardWithoutBindings.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Controls\ItemCard.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Case02SolutionPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Case02ProblemPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Case02Page.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\Case01Page.xaml">

@@ -18,9 +18,14 @@
         <view:MemoryUsageView Margin="5,10,5,0"/>
 
         <Button
-            Margin="10"
+            Margin="10,0,10,0"
             Text="Case 1: Source reassignment required"
             Command="{Binding OpenCase01Command}" />
+
+        <Button
+            Margin="10"
+            Text="Case 2: Item template leaks"
+            Command="{Binding OpenCase02Command}" />
 
         <Label
             HorizontalOptions="Start"

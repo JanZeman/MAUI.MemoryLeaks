@@ -2,23 +2,24 @@
 <view:MauiPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="MAUI.MemoryLeaks.View.Case01Page"
+    x:Class="MAUI.MemoryLeaks.View.Case02Page"
     xmlns:view="clr-namespace:MAUI.MemoryLeaks.View"
     xmlns:viewmodel="clr-namespace:MAUI.MemoryLeaks.ViewModel"
-    x:DataType="viewmodel:Case01ViewModel"
+    x:DataType="viewmodel:Case02ViewModel"
     Title="{Binding PageName}">
     <VerticalStackLayout Padding="15">
         <view:MemoryUsageView />
 
         <Button
-            Margin="0,5,0,0"
+            Margin="10"
             Text="Problem"
-            Command="{Binding OpenCase01ProblemCommand}" />
+            Command="{Binding OpenCase02ProblemCommand}" />
 
         <Button
-            Margin="0,5,0,5"
-            Text="Solution / Workaround"
-            Command="{Binding OpenCase01SolutionCommand}" />
+            Margin="10"
+            Text="Solution / Workaround not found yet"
+            IsEnabled="False"
+            Command="{Binding OpenCase02SolutionCommand}" />
 
         <Label
             HorizontalOptions="Start"

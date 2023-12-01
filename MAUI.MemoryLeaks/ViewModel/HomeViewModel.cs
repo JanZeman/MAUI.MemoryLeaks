@@ -22,4 +22,10 @@ public partial class HomeViewModel : BaseViewModel
     {
         await Shell.Current.GoToAsync(nameof(Case01Page), true);
     }
+
+    [RelayCommand]
+    private async void OpenCase02()
+    {
+        await Shell.Current.GoToAsync(nameof(Case02Page), true);
+    }
 }

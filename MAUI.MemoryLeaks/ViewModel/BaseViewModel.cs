@@ -10,9 +10,12 @@ public abstract partial class BaseViewModel : ObservableObject
     private const int OriginalMemoryCounterMax = 2;
 
     protected const string RecommendationAddItems = "Add items via the button above.";
-    protected const string RecommendationClearItems = "Wait for UI changes and then clear the items.";
-    protected const string RecommendationWaitAndObserve = "Now wait for few minutes and observe the memory behavior.";
-    protected const int TestItemsCollectionCount = 1000 * 1000;
+    protected const string RecommendationClearItemsCase01 = "Wait for UI changes and then clear the items.";
+    protected const string RecommendationObserveCase01 = "Now wait for few minutes and observe the memory behavior.";
+    protected const string RecommendationClearItemsCase02 = "The UI will load for 20-30 seconds! For only 1.000 items...";
+    protected const string RecommendationObserveCase02 = "Wait for few minutes again and observe the memory behavior.";
+    protected const int ItemsCountLarge = 1000 * 1000;
+    protected const int ItemsCountSmall = 1000;
 
     private readonly Timer _refreshInfoTimer, _callGarbageCollectorTimer;
 
