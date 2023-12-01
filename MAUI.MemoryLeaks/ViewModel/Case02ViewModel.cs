@@ -7,7 +7,9 @@ public partial class Case02ViewModel : BaseViewModel
         PageName = "Case 2: Item template leaks";
         Recommendation = "Compare the 'Problem' and 'Solution' above";
         Description =
-            "ItemTemplate causes memory leaks. It happens even if there is no any binding used!";
+            "ItemTemplate causes memory leaks. It happens even if there is no any binding used!" +
+            $"{Environment.NewLine}{Environment.NewLine}" +
+            "This can be considered as a showstopper for any application showing non-minimalistic number of items. I haven't found any solution or workaround yet. ";
     }
 
     [RelayCommand]

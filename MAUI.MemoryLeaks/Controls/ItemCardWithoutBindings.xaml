@@ -8,7 +8,7 @@
 
     <Grid Padding="0">
         <VerticalStackLayout VerticalOptions="Center" Padding="3">
-            <Label Text="No binding, no images, 'nothing'..." />
+            <Label Text="No binding, no images, nothing. Just a text in the item template..." />
         </VerticalStackLayout>
     </Grid>
 </Grid>

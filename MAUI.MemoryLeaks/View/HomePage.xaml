@@ -10,15 +10,15 @@
     <VerticalStackLayout Padding="10">
         <Label
             HorizontalOptions="Start"
-            Margin="10,10,10,5"
+            Margin="10"
             Text="{Binding Motivation}"
             FontAttributes="Italic"
             FontSize="14" />
 
-        <view:MemoryUsageView Margin="5,10,5,0"/>
+        <view:MemoryUsageView Margin="10"/>
 
         <Button
-            Margin="10,0,10,0"
+            Margin="10"
             Text="Case 1: Source reassignment required"
             Command="{Binding OpenCase01Command}" />
 
@@ -36,7 +36,7 @@
 
         <Label
             HorizontalOptions="Start"
-            Margin="10, 25, 10, 0"
+            Margin="10, 50, 10, 10"
             FontAttributes="Italic"
             Text="{Binding Description}" />
     </VerticalStackLayout>

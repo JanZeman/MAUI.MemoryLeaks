@@ -7,8 +7,8 @@
     xmlns:viewmodel="clr-namespace:MAUI.MemoryLeaks.ViewModel"
     x:DataType="viewmodel:Case02ViewModel"
     Title="{Binding PageName}">
-    <VerticalStackLayout Padding="15">
-        <view:MemoryUsageView />
+    <VerticalStackLayout Padding="10">
+        <view:MemoryUsageView Margin="10"/>
 
         <Button
             Margin="10"
@@ -30,7 +30,7 @@
 
         <Label
             HorizontalOptions="Start"
-            Margin="10, 25, 10, 0"
+            Margin="10, 50, 10, 10"
             FontAttributes="Italic"
             Text="{Binding Description}" />
     </VerticalStackLayout>

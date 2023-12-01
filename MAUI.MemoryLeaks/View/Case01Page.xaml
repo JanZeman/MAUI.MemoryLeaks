@@ -7,16 +7,16 @@
     xmlns:viewmodel="clr-namespace:MAUI.MemoryLeaks.ViewModel"
     x:DataType="viewmodel:Case01ViewModel"
     Title="{Binding PageName}">
-    <VerticalStackLayout Padding="15">
-        <view:MemoryUsageView />
+    <VerticalStackLayout Padding="10">
+        <view:MemoryUsageView Margin="10"/>
 
         <Button
-            Margin="0,5,0,0"
+            Margin="10"
             Text="Problem"
             Command="{Binding OpenCase01ProblemCommand}" />
 
         <Button
-            Margin="0,5,0,5"
+            Margin="10"
             Text="Solution / Workaround"
             Command="{Binding OpenCase01SolutionCommand}" />
 
@@ -29,7 +29,7 @@
 
         <Label
             HorizontalOptions="Start"
-            Margin="10, 25, 10, 0"
+            Margin="10, 50, 10, 10"
             FontAttributes="Italic"
             Text="{Binding Description}" />
     </VerticalStackLayout>

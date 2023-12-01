@@ -5,18 +5,18 @@
              x:Class="MAUI.MemoryLeaks.View.MemoryUsageView"
              xmlns:viewmodel="clr-namespace:MAUI.MemoryLeaks.ViewModel"
              x:DataType="viewmodel:BaseViewModel">
-    <VerticalStackLayout Margin="0,10,0,10">
-        <HorizontalStackLayout HorizontalOptions="Start" Margin="5,0,5,0">
-            <Label Text="{Binding OriginalMemoryUsageDescription}"/>
-            <Label Margin="5,0,0,0" Text="{Binding OriginalMemoryUsage}" FontAttributes="Bold" />
+    <VerticalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="Start">
+            <Label Text="{Binding OriginalMemoryUsageDescription}" Margin="0,0,5,0" />
+            <Label Text="{Binding OriginalMemoryUsage}" FontAttributes="Bold" />
         </HorizontalStackLayout>
 
 
-        <HorizontalStackLayout HorizontalOptions="Start" Margin="5,0,5,0">
-            <Label Text="{Binding CurrentMemoryUsageDescription}" />
-            <Label Margin="5,0,0,0" Text="{Binding CurrentMemoryUsage}" FontAttributes="Bold" />
+        <HorizontalStackLayout HorizontalOptions="Start">
+            <Label Text="{Binding CurrentMemoryUsageDescription}" Margin="0,0,5,0" />
+            <Label Text="{Binding CurrentMemoryUsage}" FontAttributes="Bold" />
         </HorizontalStackLayout>
 
-        <Label HorizontalOptions="Start" Margin="5,0,5,10" Text="{Binding GarbageCollectorIllustration}" />
+        <Label HorizontalOptions="Start" Text="{Binding GarbageCollectorIllustration}" />
     </VerticalStackLayout>
 </ContentView>

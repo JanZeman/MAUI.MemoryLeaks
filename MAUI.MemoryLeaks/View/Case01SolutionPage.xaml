@@ -7,12 +7,12 @@
     xmlns:viewmodel="clr-namespace:MAUI.MemoryLeaks.ViewModel"
     x:DataType="viewmodel:Case01SolutionViewModel"
     Title="{Binding PageName}">
-    <Grid RowDefinitions="Auto, *" Padding="15">
+    <Grid RowDefinitions="Auto, *" Padding="10">
         <VerticalStackLayout Grid.Row="0">
-            <view:MemoryUsageView />
+            <view:MemoryUsageView Margin="10"/>
 
             <Label
-                Margin="5,5,5,15"
+                Margin="10"
                 HorizontalOptions="Start"
                 Text="{Binding ItemsCount}" />
 
@@ -24,6 +24,7 @@
             <Button
                 Margin="10"
                 Text="Clear items"
+                IsEnabled="{Binding ItemsNotEmpty}"
                 Command="{Binding ClearItemsCommand}" />
 
             <Label
@@ -35,7 +36,7 @@
 
             <Label
                 HorizontalOptions="Start"
-                Margin="10, 25, 10, 0"
+                Margin="10, 50, 10, 10"
                 FontAttributes="Italic"
                 Text="{Binding Description}" />
         </VerticalStackLayout>
