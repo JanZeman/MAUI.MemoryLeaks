@@ -6,7 +6,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:model="clr-namespace:MAUI.MemoryLeaks.Model">
 
-    <Grid Padding="0" ColumnDefinitions="80,*">
+    <Grid Padding="0" ColumnDefinitions="80,*" Background="Orange">
         <!--<Image Aspect="AspectFill" WidthRequest="64" HeightRequest="64" Source="{Binding Image}" />-->
         <!--<Image Aspect="AspectFill" WidthRequest="64" HeightRequest="64" Source="dotnet_bot_png.png" />-->
         <VerticalStackLayout VerticalOptions="Center" Grid.Column="1" Padding="3">
