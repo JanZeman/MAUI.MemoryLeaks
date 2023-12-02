@@ -108,7 +108,7 @@ public abstract partial class BaseViewModel : ObservableObject
         return $"Explicit garbage collection: {value}";
     }
 
-    private static string GetOriginalMemoryUsage()
+    protected static string GetOriginalMemoryUsage()
     {
         return $"{GetMemoryUsage().FormatBytes()}";
     }
