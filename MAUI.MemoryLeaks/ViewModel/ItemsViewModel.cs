@@ -25,6 +25,7 @@ public abstract partial class ItemsViewModel : BaseViewModel
     [RelayCommand]
     private void AddItems()
     {
+        OriginalMemoryUsage = GetOriginalMemoryUsage();
         Recommendation = RecommendationClearItems;
         IsBusy = true;
 

@@ -7,7 +7,7 @@ public abstract partial class BaseViewModel : ObservableObject
 {
     private const int RefreshInfoInSeconds = 1;
     private const int CallGarbageCollectorInSeconds = 6;
-    private const int OriginalMemoryCounterMax = 3;
+    private const int OriginalMemoryCounterMax = 1;
 
     private readonly Timer _refreshInfoTimer, _callGarbageCollectorTimer;
 
