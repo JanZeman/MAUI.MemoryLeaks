@@ -4,7 +4,8 @@ using System.ComponentModel;
 
 namespace MAUI.MemoryLeaks;
 
-/// <summary> 
+/// <summary>
+/// https://github.com/jamesmontemagno/mvvm-helpers/blob/master/MvvmHelpers/ObservableRangeCollection.cs
 /// Represents a dynamic data collection that provides notifications when items get added, removed, or when the whole list is refreshed. 
 /// </summary> 
 /// <typeparam name="T"></typeparam> 
